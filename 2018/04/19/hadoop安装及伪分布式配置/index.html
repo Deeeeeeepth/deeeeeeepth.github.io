@@ -44,12 +44,14 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)</code></li>
 </li>
 <li><p>启动(hadoop目录下)<br><code>sbin/stall-all.sh</code></p>
 </li>
-<li><p>验证是否启动成功<br> 使用jps命令验证<br>3281 NodeManager<br>2709 NameNode<br>3016 SecondaryNameNode<br>3178 ResourceManager<br>2813 DataNode<br>8303 Jps</p>
+<li><p>验证是否启动成功<br> 使用jps命令验证<br>3281 NodeManager<br>2709 NameNode<br>3016 SecondaryNameNode<br>3178 ResourceManager<br>2813 DataNode<br>8303 Jps<br>JVM中共运行了六个进程</p>
+<ol start="6">
+<li>关闭防火墙<br><code>systemctl stop firewalld.service</code> 停止firewall<br><code>systemctl disable firewalld.service</code>禁止firewall开机启动</li>
+<li>增加windows下的host映射<br>C:\Windows\System32\drivers\etc\hosts<br>增加一条<br><code>yourIpAddr hadoop1</code><br><a href="http://hadoop1:50070" target="_blank" rel="noopener">http://hadoop1:50070</a> （HDFS管理界面）<br><img src="hdfs.png" alt="HDFS"><br><a href="http://hadoop1:8088" target="_blank" rel="noopener">http://hadoop1:8088</a> （MR管理界面）<br><img src="mr.png" alt="MR"></li>
+</ol>
 </li>
 </ol>
-<ol start="6">
-<li><p>增加windows下的host映射<br>C:\Windows\System32\drivers\etc\hosts<br>增加一条 yourIpAddr hadoop1<br>  <a href="http://hadoop1:50070" target="_blank" rel="noopener">http://hadoop1:50070</a> （HDFS管理界面）<br><img src="hdfs.png" alt="HDFS"><br>  <a href="http://hadoop1:8088" target="_blank" rel="noopener">http://hadoop1:8088</a> （MR管理界面）<br><img src="mr.png" alt="MR"></p>
-</li>
+<ol start="8">
 <li><p>配置ssh免登陆<br>#生成ssh免登陆密钥<br>#进入到我的home目录<br>cd ~/.ssh</p>
 <p>ssh-keygen -t rsa （四个回车）<br>执行完这个命令后，会生成两个文件id_rsa（私钥）、id_rsa.pub（公钥）<br>将公钥拷贝到要免登陆的机器上<br>ssh-copy-id localhost</p>
 </li>
