@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Make More Time"><title>计算机网络知识汇总 | Ranranran</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">计算机网络知识汇总</h1><a id="logo" href="/.">Ranranran</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">计算机网络知识汇总</h1><div class="post-meta">May 8, 2018<span> | </span><span class="category"><a href="/categories/计算机网络/">计算机网络</a></span></div><div class="post-content"><h4 id="网络分层模型概要"><a href="#网络分层模型概要" class="headerlink" title="网络分层模型概要"></a>网络分层模型概要</h4><ul>
+<li>OSI七层协议：<ol>
+<li>物理层</li>
+<li>数据链路层</li>
+<li>网络层</li>
+<li>运输层</li>
+<li>会话层</li>
+<li>表示层</li>
+<li>应用层</li>
+</ol>
+</li>
+<li>TCP/IP四层协议：<ol>
+<li>网络接口层（对应OSI的物理层和数据链路层）</li>
+<li>网际层IP（对应OSI的网络层）</li>
+<li>运输层（TCP/UDP 对应OSI的运输层）</li>
+<li>应用层（各种应用层协议如TELNET,FTP.SMTP等 对应OSI的会话、表示和应用层）</li>
+</ol>
+</li>
+<li><p>五层协议（常用）</p>
+<ol>
+<li>物理层</li>
+<li>数据链路层</li>
+<li>网络层</li>
+<li>运输层</li>
+<li><p>应用层</p>
+<h5 id="以五层协议从上往下来简述各层的主要功能"><a href="#以五层协议从上往下来简述各层的主要功能" class="headerlink" title="以五层协议从上往下来简述各层的主要功能"></a>以五层协议从上往下来简述各层的主要功能</h5></li>
+<li><p>应用层 （application layer）</p>
+<ul>
+<li>任务：通过应用 <strong>进程</strong> 间的交互来完成 <strong>特定网络应用</strong> ，应用层协议定义的时应用进程间通信和交互的规则。</li>
+<li>协议：HTTP DNS SMTP等</li>
+<li>数据单元：报文</li>
+</ul>
+</li>
+<li><p>运输层 (transport layer)</p>
+<ul>
+<li>任务：向两台主机中 <strong>进程</strong> 之间的通信提供 <strong>通用</strong> 的数据传输服务。应用层协议多路复用运输层的协议。</li>
+<li>协议：传输控制协议TCP（Transmission Control Protocol）提供面向连接的、可靠的数据传输服务<pre><code>用户数据报协议UDP（User Datagram Protocol）提供无连接的、尽最大努力传输的数据传输服务（不保证数据传输的可靠性）
+</code></pre></li>
+<li>数据单元：TCP-报文段 UDP-用户数据报</li>
+</ul>
+</li>
+<li><p>网络层 (network layer)</p>
+<ul>
+<li>任务: 为分组交换网上的不同 <strong>主机</strong> 提供通信服务。网络层把运输层产生的报文段或用户数据报封装成分组或包（IP分片）。IP数据报分片对传输层透明。<pre><code>选择合适的路由，使源主机运输层所传下来的分组，能够通过网络中的路由器找到目的主机。
+</code></pre></li>
+<li>协议：IP协议。（Internet Protocol）及路由选择协议。</li>
+<li>数据单元：IP数据报或数据报（分组）。</li>
+</ul>
+</li>
+<li><p>数据链路层</p>
+</li>
+</ol>
+<ul>
+<li>任务：在两个 <strong>相邻节点之间的物理线路</strong> 上（有线和无线）传输数据时，数据链路层将网络层交下来的IP数据报 <strong>组装成帧</strong> ，在两个相邻节点上传送帧。每一帧包括数据和必要的控制信息。</li>
+<li>协议：PPP协议、CSMA/CD协议、802.11、WI-FI。</li>
+<li>数据单元：PPP帧或MAC帧。</li>
+</ul>
+<ol start="5">
+<li>物理层</li>
+</ol>
+<ul>
+<li>任务：尽可能屏蔽传输媒体和通信手段的差异，使物理层上面的数据链路层感觉不到这些差异，这样就可使数据链路层只考虑如何完成本层的协议和服务，而不必考虑网络具体的传输媒体和通信手段是什么。</li>
+<li>规程：</li>
+<li>数据单元：比特。</li>
+</ul>
+</li>
+</ul>
+<h5 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h5><ol>
+<li>功能：物理层考虑的是怎样才能在链接各种计算机的后窜数媒体上传输数据，而不是值具体的传输媒体。物理层的协议称为 <strong>物理层规程</strong> ，其实就是物理层的协议，只是在协议这个名次出现之前人们就先使用了规程。<br>主要任务描述为确定与传输媒体的接口有关的一些特性，即：<ol>
+<li><strong>机械特性</strong>  指明接口所用的接线器的形状和尺寸、引脚数目和排列、固定和锁定装置等。平时常见的各种规格的接插件都有严格的标准化规定。</li>
+<li><strong>电器特性</strong>  指明在接口电缆的各条线上出现的电压的范围。</li>
+<li><strong>功能特性</strong>  指明某条线上出现的某一电平的电压的意义。</li>
+<li><strong>过程特性</strong>  指明对于不同功能的各种可能事件的出现顺序。</li>
+<li>还要完成串行传输和并行传输的转换。</li>
+</ol>
+</li>
+<li>传输媒体<ol>
+<li>双绞线。最古老也是最常用的传输媒体。把两根互相绝缘的铜导线并排放在一起，然后用规则的方法绞合起来就构成了双绞线，减少对相邻导线的电磁干扰。局域网基本都采用双绞线作为传输媒体。</li>
+<li>同轴电缆。由内导体铜制芯线、绝缘层、网状编织的外导体屏蔽层以及保护塑料外层所组成。具有很好的抗干扰性。在局域网发展初期曾广泛使用。</li>
+<li>光缆。利用光导纤维传递光脉冲来进行通信。有光脉冲相当1，没有光脉冲相当于0.由于可见光的频率非常高，约为10的8次方MHz的量级，因此一个光纤通信系统的传输带宽远远大于目前其他各种传输媒体的带宽。多模光纤-光脉冲在多模光纤中传输时会逐渐展宽，造成失真。只适合近距离传输。单模光纤的直径只有一个光的波长，可使光线一直向前传播而不会产生多次反射。<br>光纤的优点：<ol>
+<li>通信容量很大。</li>
+<li>抗雷电和电磁干扰性能好，这在有大电流脉冲干扰的环境下尤为重要。</li>
+<li>五串音干扰，保密性好，也不易被窃听或截取数据。</li>
+<li>传输损耗小，终极距离长，对远距离传输特别经济。</li>
+<li>体积小，重量轻。</li>
+</ol>
+</li>
+<li>非导引型传输媒体</li>
+</ol>
+</li>
+<li>信道复用技术<ol>
+<li>频分复用</li>
+<li>时分复用</li>
+<li>统计时分复用</li>
+<li>波分复用</li>
+<li>码分复用</li>
+</ol>
+</li>
+<li>信道：信道和电路并不等同，信道一般用来表示向某一个方向传送信息的媒体，因此，一条通信电路往往包含一条发送信道和一条接收信道。</li>
+<li>设备：集线器、转发器。</li>
+</ol>
+<h5 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h5><p>  在两个 <strong>相邻节点之间的物理线路</strong> 上（有线和无线）传输数据时，数据链路层将网络层交下来的IP数据报 <strong>组装成帧</strong> ，在两个相邻节点上传送帧。每一帧包括数据和必要的控制信息。</p>
+<ol>
+<li>数据链路层属于计算机网络的底层，数据链路层实用的信道主要有以下两种类型<ol>
+<li>点对点信道。这种信道使用一对一的点对点通信方式。</li>
+<li>广播信道。这种信道使用一对多的广播通信方式，因此过程比较复杂。广播信道上链接的主机很多，因此必须使用专用的共享信道协议来协调这些主机的数据发送。</li>
+</ol>
+</li>
+<li>实现的目的：在同一个局域网中分组怎样从一台主机传送到另一台主机，但并不经过路由器转发。局域网属于数据链路层的范围。</li>
+<li>使用点对点信道的数据链路层<ul>
+<li>链路：link，从一个节点到相邻节点的一段物理线路，中间没有其他节点。</li>
+<li>数据链路：data link，当需要在一条线路上传送数据时，除了必须有一条物理线路。还必须要一些通信协议来控制这些数据的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。</li>
+<li>帧：数据链路层把网络层交下来的数据（IP数据报）构成帧（加上首部尾部）发送到连路上，以及把接收到的帧中的数据取出（去掉首部尾部）并上交给网络层。</li>
+</ul>
+</li>
+<li>数据链路层的三个基本问题<ol>
+<li><strong>封装成帧</strong><br>封装成帧（framing）就是在一段数据的前后分别添加手部和尾部，这样就构成了一个帧，接收端在收到物理岑上交的比特流后，就能根据首部和尾部标记，从收到的比特流中识别帧的开始和结束。每一种链路层协议都会定了能传送帧的数据部分长度上限MTU最大传送单元（默认1500字节）。帧开始符SOH的ASCII十六进制编码01H结束符EOT 04H（并不是三个字母）。</li>
+<li><strong>透明传输</strong><br>如果数据部分是非ASCII码的文本文件（如二进制代码的计算机程序或图像等）可能会出现与SOH和EOT这种控制字符一样的二进制代码。解决方法：发送端的数据链路层在数据中出现控制字符SOH或EOT的前面差一个 <strong>转义字符</strong> ESC（1B）而在接收端的数据链路层在把数据送往网络层呢个之前删除这个插入的转义字符，称为字节填充或字符填充。如果转义字符也出现在数据当中，就在前面再加一个ESC。</li>
+<li><strong>差错检测</strong><ol>
+<li>比特差错：0可能变成1，1可能变成0，目前在数据链路层广泛采用了循环冗余检验CRC，将检验结果添加在数据后面称FCS冗余码。</li>
+<li>出现传输差错：帧丢失、真重复、帧失序。<br>CRC能够实现无比特差错，还不是可靠传输。对于传输差错：</li>
+</ol>
+<ul>
+<li>对于通信质量好的有线传输链路，数据链路层协议不使用确认和重传据机制，不要求数据链路层向上提供可靠传输的服务。如果在数据链路层传输数据时出现了差错并且需要改正，那么改正差错的任务就由上层协议如TCP来完成。</li>
+<li>对于通信质量较差的无线传输链路，数据链路层协议使用确认和重传机制，数据链路层向上提供可靠传输的服务。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>点对点协议PPP（电话网）<br>互联网用户通常都要连接到某个ISP才能连接互联网，PPP协议就是用户计算机和ISP进行通信时所使用的数据链路层协议。<ul>
+<li>步骤：（详见《网络协议分析》）<ol>
+<li>PPP协议的对等段分别是客户和ISP(Internet Service Provider)，他们通过Modem和电话网络连接。电话通信采用虚电路的放射式，当客户拨通ISP后，它们之间就建立了一条虚拟的直连链路，这就是点到点的由来。（ISP提供一个Modem池用以接受不同用户的请求）</li>
+<li>利用LCP建立PPP链路。（配置实用的认证协议、最大接受单元、压缩协议等）</li>
+<li>利用PAP或CHAP验证客户身份（提供站好和口令）</li>
+<li>用IPCP配置IP层参数（主要是IP地址）</li>
+<li>用LCP断开PPP链路，再断开物理链路</li>
+</ol>
+</li>
+<li>PPPoE<br>以太网上的PPP协议，用于基于以太网介入ISP的场合。传统基于PPP的拨号链路无法满足想以太网一样的高带宽需求，所以融合了PPP的基于用户的认证、控制、服务及记账功能<br>流程：<ol>
+<li>发现阶段（包括客户端发起，服务端提供（多个），客户端请求，服务端确认）</li>
+<li>PPP会话阶段</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>802.3标准以太网（局域网）</p>
+<ul>
+<li>局域网工作的层次跨越了数据链路层和物理层，局域网技术中有关数据链路层的内容比较丰富，把局域网放在数据链路层讨论，但这并不表示局域网仅仅和数据链路层有关。</li>
+<li>共享信道：如何使众多用户能够合理而方便的共享通信媒体资源<br>以太网的随机接入，所有用户可随机发送信息，如果恰巧有两个或更多的用户在同一时刻发送信息，那么在贡献向媒体上就要产生 <strong>碰撞</strong> （发生了冲突），使得所有用户发送都失败。</li>
+<li>CSMA/CD协议<br>最早的以太网是将许多计算机都连接到一根总线上。其特点是总线上的所有计算机都能检测到这个数据，也就是广播方式。但我们并不总是要在局域网上进行一对多的广播通信。为了在总线上实现一对一的通信，出现了MAC地址——使每一台计算机的适配器拥有一个与其他适配器都不同的地址，仅当数据帧中的目的地址与适配器ROM中存放的硬件地址一致时，该适配器才接受这个消息，否则丢弃。这样，具有广播性质的总线上就实现了一对一的通信。<ol>
+<li><strong>多点介入</strong> ：说明这是总线型网络，许多计算机以多点接入的方式连接在一根线上。协议的实质时载波监听和碰撞检测。</li>
+<li><strong>载波监听</strong> ：检测信道。不管在发送前还是再发送终，每个站都必须不停的检测信道。如果检测到已经有其他主机在发送数据，自己就暂时不发送数据。</li>
+<li><strong>碰撞检测</strong> ：边发送边监听。一旦发现总线上出现了碰撞，适配器就立即停止发送。</li>
+</ol>
+</li>
+<li><p>使用集线器的星型拓扑</p>
+<ol>
+<li>从表面上看，使用集线器的局域网在物理上是一个星型网，但由于集线器使用电子器件来模拟实际电缆工作，因此整个系统仍像一个传统以太网那样运行，使用集线器的以太网在逻辑上仍是一个总线网，各站共享逻辑上的总线。使用的还是CSMA/CD协议（更具体地说，是各站中的适配器执行CSMA/CD协议）。网络中的各站必须竞争对传输媒体的控制，并且在同一时刻至多只允许一个站发送数据。</li>
+<li>一个集线器有许多接口，8-16个，每个接口通过RJ-45插头用两队霜剑仙于一台计算机上的适配器相连。因此，一个集线器很像多接口的转发器。</li>
+<li>集线器工作在物理层，它的每个接口仅仅简单的转发比特，不进行碰撞检测。</li>
+</ol>
+</li>
+<li><p>MAC帧<br>广播帧：MAC目的地址全1<br>与PPP帧共同构成数据链路成的帧。</p>
+</li>
+<li><p><strong>扩展的以太网</strong><br>在许多情况下，我们需要对以太网的覆盖范围进行扩展。这种扩展的以太网在网络层看来还是一个网络。</p>
+<ol>
+<li>在物理层扩展以太网<ul>
+<li>使用多个集线器，就可以链接覆盖更大范围的多级星型结构的以太网。</li>
+<li>将若干独立的碰撞域用集线器连起来，形成一个更大的碰撞域，某两个原小碰撞域的站点相互通信会影响全部的碰撞域。</li>
+<li>如果不同的小碰撞域使用不同的以太网技术（如数据率不同），那就不可能用集线器连起来，它并不能把帧进行缓存。</li>
+</ul>
+</li>
+<li>在数据链路层扩展以太网：<br>扩展以太网更常用的方法实在数据链路层进行。最初人们使用的是网桥。<ol>
+<li>网桥：收到一个帧时，并不是想所有的接口转发此帧，而是根据此帧的目的MAC地址查找网桥中的地址表，然后确定将其转发到那一个接口，或者把它丢弃。</li>
+<li>交换机：1990年问世的交换式集线器，很快就淘汰了网桥。也成为以太网交换机或第二层交换机。<ul>
+<li>特点：</li>
+</ul>
+<ol>
+<li>实质上就是一个多接口的网桥，通常有十几个或更多的接口。</li>
+<li>以太网交换机每个接口直接与一个单台主机或另一个以太网交换机相连，并且一般都工作在全双工方式。</li>
+<li>以太网交换机还具有并行性，能通过连通多对接口，使多对主机能同时通信。相互通信的主机都是独占传输媒体，无碰撞的传输数据。</li>
+<li>以太网交换机的接口还有存储器，能在接口繁忙时把来到的帧缓存。</li>
+<li>以太网交换机由于使用了专用的交换结构芯片，用硬件转发，其转发速率比用软件转发的网桥快很多。</li>
+<li>一般都具有多种速率的接口。</li>
+</ol>
+<ul>
+<li>以太网交换机的自学习功能<br>维护一个MAC地址表。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>802.1Q虚拟局域网VLAN<ul>
+<li>定义：虚拟局域网VLAN是由一些局域网网段构成的与物理位置无关的逻辑组，而这些网段有某些共同的需求。没一个VLAN帧都有一个明确的标识符，指明发送这个帧的计算机属于哪一个VLAN，插入VLAN标记的帧称为802.1Q帧。</li>
+<li>只是局域网给用户提供的一种服务，并不是一种新型局域网。</li>
+</ul>
+</li>
+</ol>
+<h4 id="网络设备概要"><a href="#网络设备概要" class="headerlink" title="网络设备概要"></a>网络设备概要</h4><ol>
+<li><p>主机上的适配器（网卡）<br>连接主机与外界局域网，装有处理器和存储器（包括RAM和ROM）。适配器和局域网之间的通信是通过电缆或双绞线通过串行方式传输数据，与主机通信是通过主板上的I/O总线以并行方式传输的，所以适配器的一个重要功能就是要进行数据串行传输和并行传输的转换。由于网络上的数据率和计算机总线上的数据率不相同，因此适配器中必须装有对数据进行缓存的存储芯片。对计算机来说适配器也是一种I/O设备。MAC地址就存在适配器的ROM中。</p>
+<p>主板上插入适配器时，必须把管理该适配器的设备驱动程序安装在计算机操作系统中，这个驱动程序会告诉适配器，应当从存储器的什么位置上把多长的数据块发送到局域网，或者应当在存储器的什么位置上把局域网传送过来的数据块存储下来，适配器要能够实现以太网协议。</p>
+<p>适配器在接受和发送各种帧时，不使用计算机的CPU。当适配器收到有差错的帧时，就把这个帧丢弃而不必同志计算机。当适配器接收到正确的帧时，用中断方式通知计算机，并交付协议栈中的<strong>网络层</strong>。当计算机要发送IP数据报时，就由协议栈把IP数据报向下交给适配器，组装成帧后发送到局域网。也就是说包含了数据链路层和物理层两个层次的功能</p>
+</li>
+<li><p>物理层的集线器<br>集线器工作在物理层，它的接口仅仅简单的转发比特，收到1就转发1（向除发送接口的其它所有接口转发）</p>
+<h4 id="2018-5-8"><a href="#2018-5-8" class="headerlink" title="2018.5.8"></a>2018.5.8</h4></li>
+</ol>
+<ol start="2">
+<li>三张表：<ol>
+<li>ARP缓存表：</li>
+<li>MAC地址表</li>
+<li>路由表</li>
+</ol>
+</li>
+</ol>
+</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识补充/">计算机组成原理知识汇总</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活感悟/">生活感悟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识补充/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识补充/">计算机组成原理知识汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知识补充/">计算机网络知识汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/JSP+Servlet+JDBC开发日记  day2/">JSP+Servlet+JDBC开发日记 day2</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
