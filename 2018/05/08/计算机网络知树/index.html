@@ -16,55 +16,47 @@
 <li>应用层（各种应用层协议如TELNET,FTP.SMTP等 对应OSI的会话、表示和应用层）</li>
 </ol>
 </li>
-<li><p>五层协议（常用）</p>
-<ol>
+<li>五层协议（常用）：<ol>
 <li>物理层</li>
 <li>数据链路层</li>
 <li>网络层</li>
 <li>运输层</li>
-<li><p>应用层</p>
-<h4 id="以五层协议从上往下来简述各层的主要功能"><a href="#以五层协议从上往下来简述各层的主要功能" class="headerlink" title="以五层协议从上往下来简述各层的主要功能"></a>以五层协议从上往下来简述各层的主要功能</h4></li>
-<li><p>应用层 （application layer）</p>
-<ul>
+<li>应用层<h4 id="以五层协议从上往下来简述各层的主要功能"><a href="#以五层协议从上往下来简述各层的主要功能" class="headerlink" title="以五层协议从上往下来简述各层的主要功能"></a>以五层协议从上往下来简述各层的主要功能</h4></li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>应用层 （application layer）<ul>
 <li>任务：通过应用 <strong>进程</strong> 间的交互来完成 <strong>特定网络应用</strong> ，应用层协议定义的时应用进程间通信和交互的规则。</li>
 <li>协议：HTTP DNS SMTP等</li>
 <li>数据单元：报文</li>
 </ul>
 </li>
-<li><p>运输层 (transport layer)</p>
-<ul>
+<li>运输层 (transport layer)<ul>
 <li>任务：向两台主机中 <strong>进程</strong> 之间的通信提供 <strong>通用</strong> 的数据传输服务。应用层协议多路复用运输层的协议。</li>
-<li>协议：传输控制协议TCP（Transmission Control Protocol）提供面向连接的、可靠的数据传输服务<pre><code>用户数据报协议UDP（User Datagram Protocol）提供无连接的、尽最大努力传输的数据传输服务（不保证数据传输的可靠性）
-</code></pre></li>
+<li>协议：传输控制协议TCP（Transmission Control Protocol）提供面向连接的、可靠的数据传输服务<br>用户数据报协议UDP（User Datagram Protocol）提供无连接的、尽最大努力传输的数据传输服务（不保证数据传输的可靠性）</li>
 <li>数据单元：TCP-报文段 UDP-用户数据报</li>
 </ul>
 </li>
-<li><p>网络层 (network layer)</p>
-<ul>
-<li>任务: 为分组交换网上的不同 <strong>主机</strong> 提供通信服务。网络层把运输层产生的报文段或用户数据报封装成分组或包（IP分片）。IP数据报分片对传输层透明。<pre><code>选择合适的路由，使源主机运输层所传下来的分组，能够通过网络中的路由器找到目的主机。
-</code></pre></li>
+<li>网络层 (network layer)<ul>
+<li>任务: 为分组交换网上的不同 <strong>主机</strong> 提供通信服务。网络层把运输层产生的报文段或用户数据报封装成分组或包（IP分片）。IP数据报分片对传输层透明。<br>选择合适的路由，使源主机运输层所传下来的分组，能够通过网络中的路由器找到目的主机。</li>
 <li>协议：IP协议。（Internet Protocol）及路由选择协议。</li>
 <li>数据单元：IP数据报或数据报（分组）。</li>
 </ul>
 </li>
-<li><p>数据链路层</p>
-</li>
-</ol>
-<ul>
+<li>数据链路层<ul>
 <li>任务：在两个 <strong>相邻节点之间的物理线路</strong> 上（有线和无线）传输数据时，数据链路层将网络层交下来的IP数据报 <strong>组装成帧</strong> ，在两个相邻节点上传送帧。每一帧包括数据和必要的控制信息。</li>
 <li>协议：PPP协议、CSMA/CD协议、802.11、WI-FI。</li>
 <li>数据单元：PPP帧或MAC帧。</li>
 </ul>
-<ol start="5">
-<li>物理层</li>
-</ol>
-<ul>
+</li>
+<li>物理层<ul>
 <li>任务：尽可能屏蔽传输媒体和通信手段的差异，使物理层上面的数据链路层感觉不到这些差异，这样就可使数据链路层只考虑如何完成本层的协议和服务，而不必考虑网络具体的传输媒体和通信手段是什么。</li>
 <li>规程：</li>
 <li>数据单元：比特。</li>
 </ul>
 </li>
-</ul>
+</ol>
 <h3 id="网段的概念"><a href="#网段的概念" class="headerlink" title="网段的概念"></a>网段的概念</h3><ul>
 <li>由于网段由三种含义，分别对应三个层次，特拿出单说</li>
 </ul>
@@ -254,4 +246,4 @@
 </ol>
 </li>
 </ol>
-</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活感悟/">生活感悟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/JSP+Servlet+JDBC开发日记  day2/">JSP+Servlet+JDBC开发日记 day2</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活感悟/">生活感悟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/JSP+Servlet+JDBC开发日记  day2/">JSP+Servlet+JDBC开发日记 day2</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
