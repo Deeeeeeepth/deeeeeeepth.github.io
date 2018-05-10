@@ -245,16 +245,61 @@
 <p>主板上插入适配器时，必须把管理该适配器的设备驱动程序安装在计算机操作系统中，这个驱动程序会告诉适配器，应当从存储器的什么位置上把多长的数据块发送到局域网，或者应当在存储器的什么位置上把局域网传送过来的数据块存储下来，适配器要能够实现以太网协议。</p>
 <p>适配器在接受和发送各种帧时，不使用计算机的CPU。当适配器收到有差错的帧时，就把这个帧丢弃而不必同志计算机。当适配器接收到正确的帧时，用中断方式通知计算机，并交付协议栈中的<strong>网络层</strong>。当计算机要发送IP数据报时，就由协议栈把IP数据报向下交给适配器，组装成帧后发送到局域网。也就是说包含了数据链路层和物理层两个层次的功能</p>
 </li>
-<li><p>物理层的集线器<br>集线器工作在物理层，它的接口仅仅简单的转发比特，收到1就转发1（向除发送接口的其它所有接口转发）</p>
+<li><p>物理层的有源集线器(hub)<br>集线器工作在物理层，它的接口仅仅简单的转发比特，收到1就转发1（向除发送接口的其它所有接口转发）</p>
 </li>
-<li>数据链路层的以太网交换机<ul>
-<li>每个接口是一个碰撞域。不同接口相互通信并行传输数据，全双工。</li>
-<li>交换机的MAC地址在交换机进行数据交换时是没有作用的，因为交换机并不对转发的数据帧进行拆包重封装。所以对于交换机来说，如果只是完成数据帧交换，则可以不要MAC地址（仅指二层交换机，三层交换机完成路由功能自然每个端口得有IP有MAC）。但是，若要求交换机有网管功能，即需要远程登录管理，则交换机必须有一个MAC地址，如此用户才可以对交换机进行远程登录管理。引用cisco的原文For L2 switches, there are mac addresses for different functions (to be able to communicate (when we want to telnet, ping or do snmp to the switch) and spanning tree (to form the bridge ID).</li>
-<li>但是事实上很多交换机不只一个MAC地址，而是每个端口均有一个MAC地址，这个就与Spanning Tree生成树协议有关运行生成树协议的交换机会发送BPDU获取Bridge ID，Bridge ID中包括网桥的优先级和网桥MAC地址，Bridge ID最小者当选根网桥，在选举出根网桥之后，Spanning Tree协议会在非根网桥选取唯一的根端口，这时就与端口的Port ID相关，在实际应用中是以端口的MAC地址作为Port ID。这就是端口MAC地址的用处之在。实际表现的形式就是交换机本地报文的二层封装，如BPDU。至于Port ID为何要以MAC地址而不由交换机自定义，我个人的想法是这个原因和网卡MAC地址使用网卡物理地址的原因类似，Port ID要求标识出哪个网桥的哪个端口，使用Bridge ID+Port ID就可以在全网唯一标识一个端口，那采用何种地址方能保证唯一？自然就是MAC地址。综上所述，交换机每个端口均有一个MAC地址。<h3 id="2018-5-8"><a href="#2018-5-8" class="headerlink" title="2018.5.8"></a>2018.5.8</h3></li>
+<li><p>网桥(bridge)</p>
+<ul>
+<li>功能：工作在物理层和数据链路层。用作物理层设备时，它重新生成接收到的信号。用作数据链路层设备时，它可以检查帧所包含的物理地址，根据端口地址映射表决定该帧是转发还是丢弃。网桥一个端口连接的是一个冲突域。</li>
+<li>透明网桥(transparent Bridge)是一个他所连接的站点完全意识不到其存在的网桥。在系统中增加或移除一个透明网桥，则不需要重新配置。透明网桥符合以下三条标准：<ol>
+<li>帧必须能从一个站点发送到另一个站点。</li>
+<li>通过学习网络中的帧，自动建立转发表。</li>
+<li>避免系统内循环。<br>以下讨论针对透明网桥。</li>
+</ol>
+</li>
+<li>转发表：端口与主机MAC地址的对应关系，通常一个端口对应多个MAC地址。接收到帧后网桥根据帧中的源MAC地址维护自己的转发表，并查找目的MAC地址是否有记录，有记录则转发到对应端口，发送到该端口对应的冲突域中；无记录则向所有端口转发此帧。</li>
+<li>循环问题<br>为了保证网络的高可用性，通常会使用冗余网桥，在两个冲突域之间使用多个网桥，如果一个网桥失效，另一个网桥会接管。不幸的是，冗余带来了循环问题。例：<br>在系统中使用两个网桥连接两个LAN产生循环：<ol>
+<li>位于LAN1的站点A向LAN2的站点D发送一帧。两个网桥的转发表都是空的，所以都转发帧，并根据A的MAC地址更新自己的转发表。</li>
+<li>现在LAN2中有两分该帧的拷贝。网桥1发出的拷贝网桥2也会接收，但是网桥2的转发表里没有目的地址D的信息，向所有端口转发此帧。网桥1同样也会收到网桥2的拷贝，也会向所有端口转发。</li>
+<li>现在LAN1中有了该帧的两份拷贝，又重复上一步骤的过程，每个帧都在网络中泛滥。</li>
+<li>这个过程一直持续。注意，网桥也是中继器，并且重新生成帧。所以在每次重复中，都有该帧重新生成的新拷贝。</li>
+</ol>
+</li>
+<li>生成树(spanning tree)<ul>
+<li>为了解决循环问题，IEEE规范需要网桥使用生成树算法来建立无循环拓扑结构。生成树是一个没有循环路径的图。</li>
+<li>算法步骤：<ol>
+<li>每个网桥有一个内置的ID（通常是唯一的序列号（MAC））。每个网桥广播它的ID，这样所有王巧都知道那个是最小的ID。选ID最小的网桥作为根网桥（生成树的根）。</li>
+<li>以根网桥为最小生成树的根，生成一个最小生成树。</li>
+<li>基于生成树，标记术语生成树部分的咹为 <strong>转发端口</strong>(forwarding prot)，它转发网桥收到的帧，标记不属于生成树部分的端口为 <strong>阻塞端口</strong>(blocking port)，它阻塞网桥接收到的帧。</li>
+<li>动态算法。每个网桥都配置了一个软件包来动态的完成这个过程，网桥互相发送称为网桥协议数据单元BPDU的特定消息，用来更新生成树。当系统有变化时，如某个网桥出现故障或者增加移除网桥，生成树都需要更新。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>源路由网桥：是IEEE设计用于令牌环局域网的防止冗余网桥系统的循环问题的方法。</li>
+</ul>
+</li>
+<li><p>二层交换机(two-layer switch)</p>
+<ul>
+<li>洪范和广播：<ul>
+<li>洪范：二层交换机对未知单播会洪范，帧结构和源目的MAC不变，发给除去接收的所有端口。二层行为。由于“FF.FF.FF.FF.FF.FF”是广播地址，永远都不会出现在源MAC字段，所以永远不会被交换机学习到。配置了VLAN，学习过程、转发过程都需要检查帧头802.1Q的VLAN ID字段，泛洪也只在属于该VLAN ID的端口上泛洪。</li>
+<li>广播：“FF.FF.FF.FF.FF.FF”只能出现在目的MAC字段，所以交换机永远都匹配不到，只有泛洪，该VLAN里的所有端口都可以接收到，此乃广播。</li>
+</ul>
+</li>
+<li>两层交换机是一个有许多端口并且有更好（更快）性能的网桥。</li>
+<li>有少量端口的网桥只可以连接几个局域网。有更多端口的网桥可以给每个站点分配唯一的端口，每个站点都作为独立的实体，这意味着没有通信量竞争（没有以太网中见到的冲突）。</li>
+<li>两层交换机像王巧一样，基于收到帧的MAC地址做出过滤决策。但是，两层交换机更加复杂。它有缓存区来保存帧进行处理，由交换组件使得更快地转发帧。快速交换机：一检查到帧头部的MAC地址就转发帧。</li>
+</ul>
+</li>
+<li>路由器(router)<ul>
+<li>路由器是三层设备，它基于分组的逻辑地址（主机到主机寻址）路由分组。路由器通常连接LAN和路由器中的WAN，它有一张表（路由表）来决策路由。</li>
+</ul>
+</li>
+<li>三层交换机(three-layer switch)<ul>
+<li>三层交换机是路由器，但更快更复杂。三层交换机中的交换光纤允许更快的表查询和转发。</li>
 </ul>
 </li>
 </ol>
-<ol start="2">
+<h3 id="2018-5-8"><a href="#2018-5-8" class="headerlink" title="2018.5.8"></a>2018.5.8</h3><ol start="2">
 <li>三张表：<ol>
 <li>ARP缓存表：</li>
 <li>MAC地址表</li>
@@ -262,4 +307,4 @@
 </ol>
 </li>
 </ol>
-</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活感悟/">生活感悟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/JSP+Servlet+JDBC开发日记  day2/">JSP+Servlet+JDBC开发日记 day2</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活感悟/">生活感悟</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/JSP+Servlet+JDBC开发日记  day2/">JSP+Servlet+JDBC开发日记 day2</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
