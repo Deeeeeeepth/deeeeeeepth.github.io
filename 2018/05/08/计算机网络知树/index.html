@@ -191,12 +191,13 @@
 </li>
 </ol>
 </li>
+<li>以太网帧长度：1500字节数据+22字节首部。其中首部包含4字节VLAN标识</li>
 </ol>
 </li>
 </ul>
 </li>
 <li>802.1Q虚拟局域网VLAN<ul>
-<li>定义：虚拟局域网VLAN是由一些局域网网段构成的与物理位置无关的逻辑组，而这些网段有某些共同的需求。没一个VLAN帧都有一个明确的标识符，指明发送这个帧的计算机属于哪一个VLAN，插入VLAN标记的帧称为802.1Q帧。</li>
+<li>定义：虚拟局域网VLAN是由一些局域网网段构成的与物理位置无关的逻辑组，而这些网段有某些共同的需求。每一个VLAN帧都有一个明确的标识符，指明发送这个帧的计算机属于哪一个VLAN，插入VLAN标记的帧称为802.1Q帧。</li>
 <li>只是局域网给用户提供的一种服务，并不是一种新型局域网。</li>
 </ul>
 </li>
@@ -224,9 +225,109 @@
 <li>与IP协议配套使用的还有三个协议：<ul>
 <li>地址解析协议ARP（Address Resolution Protocol）(原RARP已经弃用)</li>
 <li>网际控制报文协议ICMP(Internet Control Message Protocol)</li>
-<li>网际组管理协议IGMP(Internet Group Management Protocol)<br>-</li>
+<li>网际组管理协议IGMP(Internet Group Management Protocol)</li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>虚拟互联网络</p>
+<pre><code>- 用户的需求是多样的，没有一种单一的网络能够适应所有用户的需求（微星链路、无线局域网、以太网等）。网络技术也是不断发展的，网络的制造厂家也要不断推出新的网络，在竞争中求生存。因此在市场上总是有很多不同性能、不同网络协议的网络，供不同用户选用。
+
+- 当将网络互相连接起来使用的中间设备是转发器或网桥时，这仅仅是把一个网络扩大了，而从网络层的角度看，这仍然程为一个网络，一般并不称之为网络互连。现在我们讨论网络互联时，都是指用路由器进行网络互连和路由选择。路由器其实就是一台专用计算机，用来在互联网中进行路由选择。
+
+- 参加互联的计算机网络都是用相同的网际协议IP（Internet Protocol）,因此可以把互联以后的计算机网络看成一个大的，主机直接连接的虚拟互连网络。所谓虚拟互连网络也就是逻辑互连网络，他的意思是互连起来的各种物理网络的异构性本来是客观存在的，但是我们利用IP协议就可以使这些性能各异的网络在网络层看起来好像是一个统一的网络，称为IP网。
+
+- 优点：当IP网上的主机进行通信时，就好像在一个单个网络上通信一样，它们看不见互连的个网络的具体异构细节（如具体的编址方案、路由选择协议等）如果在这种覆盖全球的IP网上的上层使用TCP协议，那么就是现在的互联网。
+
+- 当互联网中的一个主机H1要把一个IP数据报发送给目的主机H2时，主机H1要先查找自己的路由表，看目的主机是否就在本网络上。如果是就直接交付，任务就完成了，如果不是，则必须把数据报发送给某个路由器R1，路由器R1查找了自己的路由表（转发表）后，知道应把数据报转发给R2进行间接交付，这样一直转发下去，最后路由器R5知道自己是和H2连接在同一个网络上，不需要再使用别的路由器转发了，就把数据报直接交付目的主机H2。
+- **互联网可以由多种异构网络构成**
+</code></pre></li>
+<li><p>分类的IP地址</p>
+<ol>
+<li><p>IP地址及其表示方法</p>
+<ul>
+<li>整个互联网就是一个单一的、抽象的网络。IP地址就是给互联网上的每一台主机（或路由器）的每一个接口分配i一个在全世界范围内是唯一的32位的标识符。IP地址的结构使我们可以在互联网上很方便的进行寻址。IP地址现在由互联网名字和数字分配机构ICANN进行分配。</li>
+<li>IP编址方法共经过了三个历史阶段：<ol>
+<li>分类的IP地址。最基本的编址方法，在1981年就通过了相应的</li>
+<li>子网的划分。 对最基本的编址方法的改进，其标准RFC 950在1985年通过。</li>
+<li>构成超网。这是比较新的无分类编址方法。1993年提出后很快就得到推广应用。</li>
+</ol>
+</li>
+<li>分类的IP地址：<br>所谓分类的IP地址就是将IP地址划分为若干个固定类，每一类地址都由两个固定长度的字段组成，其中第一个字短视网络号（net-id），它标识主机（或路由器）所连接到的网络。一个网络号在整个互联网范围内必须是唯一的。第二个字段是主机号（host-id），它标识该主机（或路由器）。一台主机号在他前面的网络号所指的网络范围内必须是唯一的。由此可见，一个IP地址在整个互联网范围内是唯一的。<ul>
+<li>A类、B类、C类地址的网络号字段分别为1个、2个、3个字节长，而在网络耗资段最前面有1~3位的 <strong>类别位</strong>，其数值分别规定为0，10，110.</li>
+<li>A、B、C类地址的主机号字段分别为3个、2个、1个字节长。</li>
+<li>D类地址（前四位是1110）用于多播。</li>
+<li>E类地址（前四位是1111）保留为以后使用。</li>
+<li>A类地址中网络号为127（01111111）保留为本地软件换回测试。</li>
+<li>全零表示网络全1表示广播。</li>
+</ul>
+</li>
+<li><p>IP地址具有以下一些重要特点。</p>
+<ol>
+<li>每一个IP地址都有网络号和主机号两部分组成，是一种 <strong>分等级的地址结构</strong>。分等级的好处：<ul>
+<li>IP地址管理机构在分配IP地址时 <strong>只分配网络号</strong>，而剩下的主机号则由得到该网络号的单位自行分配。这样就方便了IP地址的管理。</li>
+<li>路由器仅根据目的主机所连接的网络号来转发分组（而不考虑目的主机号），这样就可以使路由表中的项目数大幅减少，从而减少了路由表所占的存储空间以及查找路由表的时间。</li>
+</ul>
+</li>
+<li>实际上IP地址是标识一台主机（或路由器）和一条链路的 <strong>接口</strong>。当一台主机同时连接到两个网络上时，该主机必须由两个相应的IP地址，其网络号必须是不同的。称为 <strong>多归属主机</strong>。</li>
+<li>按照互联网的观点，一个网络是指具有相同网络号net-id的主机的集合，因此，用转发器或网桥连接起来的若干个局域网仍为一个网络，因为这些局域网都具有相同的网络号，具有不同网络号的局域网必须用路由器进行连接。</li>
+<li>在IP地址中，所有分配到网络号的网络（不管是范围很小的局域网，还是范围很大的广域网）都是 <strong>平等的</strong>，互联网平等对待每一个IP地址</li>
+</ol>
+</li>
+<li><p>我们应当注意到：</p>
+<ul>
+<li>在同一个局域网上的主机或路由器的IP地址种的网络号必须是一样的。</li>
+<li>用网桥互连的的网段仍然是一个局域网，只能有一个网络号。</li>
+<li>路由器总是具有两个或以上的IP地址，每一个接口都有一个不同的网络号的IP地址。</li>
+<li>当两个路由器直接相连时，在连线两端的接口处，可以分配也可以不分配IP地址。如分配了IP地址，则这一段就构成了一种只包含一段线路的特殊网络。之所以叫网络是因为他有IP地址。但为了节省IP地址资源，对于这种仅有一段连线构成的特殊网络，现在也常常不分配网络。通常把这样的网络称为无边号网络或无名网络。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>IP地址与硬件地址（即物理地址也即MAC地址）<br>  从层次的角度看，物理地址是物理层和数据链路层使用的地址，而IP地址是网络层和以上各层使用的地址，是一种逻辑地址（用软件实现的）。<br>  在发送数据时，数据从高层下到低层，然后才到通信链路上传输。使用IP地址的IP数据报一旦交给了数据链路层，就被封装成MAC帧了。MAC帧在传送时使用的源地址和目的地址都是硬件地址，这两个硬件地址都写在MAC帧的首部中。</li>
+<li>强调：<ol>
+<li>在IP层抽象的互联网上只能看到IP数据报。</li>
+<li>虽然在IP数据报首部有源站IP地址，但路由器只根据目的站的IP地址的网络号进行路由选择。</li>
+<li>在局域网的链路层，只能看见MAC帧。IP数据报被封装在MAC帧中。MAC帧在不同网络上传送时，其MAC帧首部的源地址和目的地址要发生变化，路由器在收到MAC帧后，在数据链路层要丢弃原来的MAC帧的首部和尾部，在转发时重新添加自己出口的MAC地址和目的MAC地址。MAC帧的首部的这种变化，IP层是看不到的。</li>
+<li>尽管互联在一起的网络的硬件地址体系各不同，但IP层抽象的互联网却屏蔽了下层这些很复杂的细节。只要我们在网络层上讨论问题，就能够使用统一的。抽象的IP地址研究主机和主机或路由器之间的通信。</li>
+</ol>
+</li>
+<li>地址解析协议ARP<ul>
+<li>为什么不直接使用硬件地址进行通信，转而用抽象的IP地址？<br>由于全世界存在着各式各样的网络，它们 <strong>使用不同的硬件地址</strong>。要使这些异构网络能够互相通信就必须进行非常复杂的硬件地址转换工作，因此由用户或用户主机来完成这项工工作几乎是不可能的事。但IP编址把这个复杂问题解决课。连接到互联网的主机只需各自拥有一个唯一的IP地址，它们之间的通信就像连接在同一个网络上那样简单方便，因为上述的调用ARP的复杂过程都是由计算机软件自动进行的，对用户来说是看不见这种调用过程的。</li>
+<li>为了解决同一网段（同一局域网）内主机（或路由器）的IP地址和硬件地址的映射问题。</li>
+<li>主机A向主机B发送一个IP报文的步骤：</li>
+</ul>
+<ol>
+<li>主机A查找自己的ARP缓存表，如果由B的记录，将MAC填入帧头部发出。</li>
+<li>若缓存表中无记录，主机A根据自己的掩码计算与主机B是否处于同一网段。</li>
+<li>如果根据A的掩码计算A和B在同一网段（可能存在实际不在同一网段的情况192.168.1.10/16和192.168.128.10/24），广播ARP请求报文。</li>
+<li>如果B在同一网段，回复APR回应报文。A将其中MAC地址填入MAC帧发出。</li>
+<li>如果实际不在同一网段，若设置了代理ARP，代理ARP会根据自己的路由表回应（代理ARP只响应那些在自己的路由表里能找到的网段）。若无代理APR或ARP路由表中无记录则丢弃该报文。</li>
+<li>若A根据自己的掩码计算与B不属于同一网段，则会发给网关，先用网关的IP请求其MAC地址，然后将报文的MAC地址填上网关的MAC发送。</li>
+<li>网关根据路由表转发。</li>
+</ol>
+</li>
+<li>IP数据报的格式：<ul>
+<li>IP数据报首部的固定部分的字段：</li>
+</ul>
+<ol>
+<li>版本：4位。IP协议的版本。</li>
+<li>首部长度：4位。单位：32字长（4字节）。</li>
+<li>区分服务：8位，用来获取更好的服务。一般不使用。</li>
+<li>总长度：16位。指首部和数据之和的长度。单位为字节。理论上来说最多可有65535字节但受数据链路层MTTU的限制，若超过MTU的值就必须把过长的数据报进行分片处理。</li>
+<li>标识（identification）：16位。IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就+1，并将此值赋给标识字段。当数据报超过MTU需要分片时，这个标识字段就被复制到所有的数据报片的标识字段中。相同的标识字段的值使分片后的各数据报片最后能正确的重装为原来的数据报。</li>
+<li>标志（flag）：3位。但目前只有两位有意义。<br>MF（More Fragment）MF=1表示后面还有分片的数据报。MF=0则说明这是该数据报最后一个。<br>DF（Don’t Fragment）DF=0时允许分片。</li>
+<li>片偏移：13位。</li>
+<li>生存时间TTL：8位。</li>
+<li>协议：8位。指出此数据报携带的数据是使用何种协议，以便目的主机的IP层知道应将数据部分上交给哪个协议进行处理。</li>
+<li>首部检验和：16位。只检验数据报的首部，但不包括数据部分。</li>
+<li>源地址：32位</li>
+<li>目的地址：32位</li>
+</ol>
+<ul>
+<li>IP数据报首部的可变部分：<br>就是一个选项字段。</li>
 </ul>
 </li>
 </ul>
@@ -280,14 +381,14 @@
 </li>
 <li><p>二层交换机(two-layer switch)</p>
 <ul>
-<li>洪范和广播：<ul>
-<li>洪范：二层交换机对未知单播会洪范，帧结构和源目的MAC不变，发给除去接收的所有端口。二层行为。由于“FF.FF.FF.FF.FF.FF”是广播地址，永远都不会出现在源MAC字段，所以永远不会被交换机学习到。配置了VLAN，学习过程、转发过程都需要检查帧头802.1Q的VLAN ID字段，泛洪也只在属于该VLAN ID的端口上泛洪。</li>
+<li>洪泛和广播：<ul>
+<li>洪泛：二层交换机对未知单播会洪范，帧结构和源目的MAC不变，发给除去接收的所有端口。二层行为。由于“FF.FF.FF.FF.FF.FF”是广播地址，永远都不会出现在源MAC字段，所以永远不会被交换机学习到。配置了VLAN，学习过程、转发过程都需要检查帧头802.1Q的VLAN ID字段，泛洪也只在属于该VLAN ID的端口上泛洪。</li>
 <li>广播：“FF.FF.FF.FF.FF.FF”只能出现在目的MAC字段，所以交换机永远都匹配不到，只有泛洪，该VLAN里的所有端口都可以接收到，此乃广播。</li>
 </ul>
 </li>
 <li>两层交换机是一个有许多端口并且有更好（更快）性能的网桥。</li>
-<li>有少量端口的网桥只可以连接几个局域网。有更多端口的网桥可以给每个站点分配唯一的端口，每个站点都作为独立的实体，这意味着没有通信量竞争（没有以太网中见到的冲突）。</li>
-<li>两层交换机像王巧一样，基于收到帧的MAC地址做出过滤决策。但是，两层交换机更加复杂。它有缓存区来保存帧进行处理，由交换组件使得更快地转发帧。快速交换机：一检查到帧头部的MAC地址就转发帧。</li>
+<li>有少量端 口的网桥只可以连接几个局域网。有更多端口的网桥可以给每个站点分配唯一的端口，每个站点都作为独立的实体，这意味着没有通信量竞争（没有以太网中见到的冲突）。</li>
+<li>两层交换机像网桥一样，基于收到帧的MAC地址做出过滤决策。但是，两层交换机更加复杂。它有缓存区来保存帧进行处理，由交换组件使得更快地转发帧。快速交换机：一检查到帧头部的MAC地址就转发帧。</li>
 </ul>
 </li>
 <li>路由器(router)<ul>
@@ -307,4 +408,4 @@
 </ol>
 </li>
 </ol>
-</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop，IDEA/" style="font-size: 15px;">hadoop，IDEA</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/windows下IDEA远程连接Hadoop/">windows下IDEA远程连接Hadoop</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/hadoop，IDEA/" style="font-size: 15px;">hadoop，IDEA</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/windows下IDEA远程连接Hadoop/">windows下IDEA远程连接Hadoop</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
