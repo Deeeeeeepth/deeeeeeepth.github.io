@@ -231,17 +231,20 @@
 </ul>
 </li>
 <li><p>虚拟互联网络</p>
-<pre><code>- 用户的需求是多样的，没有一种单一的网络能够适应所有用户的需求（微星链路、无线局域网、以太网等）。网络技术也是不断发展的，网络的制造厂家也要不断推出新的网络，在竞争中求生存。因此在市场上总是有很多不同性能、不同网络协议的网络，供不同用户选用。
-
-- 当将网络互相连接起来使用的中间设备是转发器或网桥时，这仅仅是把一个网络扩大了，而从网络层的角度看，这仍然程为一个网络，一般并不称之为网络互连。现在我们讨论网络互联时，都是指用路由器进行网络互连和路由选择。路由器其实就是一台专用计算机，用来在互联网中进行路由选择。
-
-- 参加互联的计算机网络都是用相同的网际协议IP（Internet Protocol）,因此可以把互联以后的计算机网络看成一个大的，主机直接连接的虚拟互连网络。所谓虚拟互连网络也就是逻辑互连网络，他的意思是互连起来的各种物理网络的异构性本来是客观存在的，但是我们利用IP协议就可以使这些性能各异的网络在网络层看起来好像是一个统一的网络，称为IP网。
-
-- 优点：当IP网上的主机进行通信时，就好像在一个单个网络上通信一样，它们看不见互连的个网络的具体异构细节（如具体的编址方案、路由选择协议等）如果在这种覆盖全球的IP网上的上层使用TCP协议，那么就是现在的互联网。
-
-- 当互联网中的一个主机H1要把一个IP数据报发送给目的主机H2时，主机H1要先查找自己的路由表，看目的主机是否就在本网络上。如果是就直接交付，任务就完成了，如果不是，则必须把数据报发送给某个路由器R1，路由器R1查找了自己的路由表（转发表）后，知道应把数据报转发给R2进行间接交付，这样一直转发下去，最后路由器R5知道自己是和H2连接在同一个网络上，不需要再使用别的路由器转发了，就把数据报直接交付目的主机H2。
-- **互联网可以由多种异构网络构成**
-</code></pre></li>
+<ul>
+<li><p>用户的需求是多样的，没有一种单一的网络能够适应所有用户的需求（微星链路、无线局域网、以太网等）。网络技术也是不断发展的，网络的制造厂家也要不断推出新的网络，在竞争中求生存。因此在市场上总是有很多不同性能、不同网络协议的网络，供不同用户选用。</p>
+</li>
+<li><p>当将网络互相连接起来使用的中间设备是转发器或网桥时，这仅仅是把一个网络扩大了，而从网络层的角度看，这仍然程为一个网络，一般并不称之为网络互连。现在我们讨论网络互联时，都是指用路由器进行网络互连和路由选择。路由器其实就是一台专用计算机，用来在互联网中进行路由选择。</p>
+</li>
+<li><p>参加互联的计算机网络都是用相同的网际协议IP（Internet Protocol）,因此可以把互联以后的计算机网络看成一个大的，主机直接连接的虚拟互连网络。所谓虚拟互连网络也就是逻辑互连网络，他的意思是互连起来的各种物理网络的异构性本来是客观存在的，但是我们利用IP协议就可以使这些性能各异的网络在网络层看起来好像是一个统一的网络，称为IP网。</p>
+</li>
+<li><p>优点：当IP网上的主机进行通信时，就好像在一个单个网络上通信一样，它们看不见互连的个网络的具体异构细节（如具体的编址方案、路由选择协议等）如果在这种覆盖全球的IP网上的上层使用TCP协议，那么就是现在的互联网。</p>
+</li>
+<li><p>当互联网中的一个主机H1要把一个IP数据报发送给目的主机H2时，主机H1要先查找自己的路由表，看目的主机是否就在本网络上。如果是就直接交付，任务就完成了，如果不是，则必须把数据报发送给某个路由器R1，路由器R1查找了自己的路由表（转发表）后，知道应把数据报转发给R2进行间接交付，这样一直转发下去，最后路由器R5知道自己是和H2连接在同一个网络上，不需要再使用别的路由器转发了，就把数据报直接交付目的主机H2。</p>
+</li>
+<li><strong>互联网可以由多种异构网络构成</strong></li>
+</ul>
+</li>
 <li><p>分类的IP地址</p>
 <ol>
 <li><p>IP地址及其表示方法</p>
@@ -286,7 +289,7 @@
 </li>
 </ol>
 </li>
-<li>IP地址与硬件地址（即物理地址也即MAC地址）<br>  从层次的角度看，物理地址是物理层和数据链路层使用的地址，而IP地址是网络层和以上各层使用的地址，是一种逻辑地址（用软件实现的）。<br>  在发送数据时，数据从高层下到低层，然后才到通信链路上传输。使用IP地址的IP数据报一旦交给了数据链路层，就被封装成MAC帧了。MAC帧在传送时使用的源地址和目的地址都是硬件地址，这两个硬件地址都写在MAC帧的首部中。</li>
+<li>IP地址与硬件地址（即物理地址也即MAC地址）<br> 从层次的角度看，物理地址是物理层和数据链路层使用的地址，而IP地址是网络层和以上各层使用的地址，是一种逻辑地址（用软件实现的）。<br> 在发送数据时，数据从高层下到低层，然后才到通信链路上传输。使用IP地址的IP数据报一旦交给了数据链路层，就被封装成MAC帧了。MAC帧在传送时使用的源地址和目的地址都是硬件地址，这两个硬件地址都写在MAC帧的首部中。</li>
 <li>强调：<ol>
 <li>在IP层抽象的互联网上只能看到IP数据报。</li>
 <li>虽然在IP数据报首部有源站IP地址，但路由器只根据目的站的IP地址的网络号进行路由选择。</li>
@@ -330,7 +333,220 @@
 <li>IP数据报首部的可变部分：<br>就是一个选项字段。</li>
 </ul>
 </li>
+<li><p>IP层转发分组的流程</p>
+<ol>
+<li>从数据报的首部提取目的主机的IP地址D，得到目的网络地址为N。</li>
+<li>若N就是与此路由器直接相连的某个网络地址，则进行直接交付，不需要再经过其他的路由器，直接把数据报交付的目的主机（包括把目的主机D转换为具体的硬件地址，把数据报封装成MAC帧，再发送此帧。）；否则就间接交付执行（3）。</li>
+<li>若路由表中有目的地址为D的特定主机路由，就把数据报传送给路由表中所指明的下一跳路由器；否则，执行（4）。</li>
+<li>若路由表中有到达网络N的路由，则把数据报传送给路由表中所指明的下一跳路由器；否则，执行（5）。</li>
+<li>若路由表中有一个默认路由，则把书记宝传送给路由表所指明的默认路由器，否则执行（6）。</li>
+<li>报告转发分组出错。</li>
+</ol>
+<p>怎样找到下一跳路由器：<br> 从路由表中得到下一跳路由器的IP地址后，不是把这个地址填入IP数据报，二十送交数据链路层的网络接口软件。网络接口软件负责把下一跳路由器的IP地址转换成硬件地址（必须使用ARP），并将此硬件地址放在链路层MAC帧的首部。然后根据MAC地址找到下一跳路由器。（在交付过程中源、目的IP地址是不会变的，源、目的MAC地址会变成两个端口的MAC）。</p>
+<h4 id="划分子网和构造超网"><a href="#划分子网和构造超网" class="headerlink" title="划分子网和构造超网"></a>划分子网和构造超网</h4><h5 id="划分子网"><a href="#划分子网" class="headerlink" title="划分子网"></a>划分子网</h5></li>
 </ul>
+<ol>
+<li>从两级IP地址到三级IP地址<ul>
+<li>两级分类地址缺陷：</li>
+</ul>
+<ol>
+<li>IP地址空间的利用率有时很低。有的单位申请B类网址而不是够用的C类网址，理由是考虑日后发展。IP地址的浪费还会使IP地址空间的资源过早的被用完。</li>
+<li>给每一个物理网络分配一个网络号会使路由表变得太大而使网络性能变坏。</li>
+<li>两级IP地址不够领过。<br>为了解决上述问题，1985年起IP地址中又增加了一个“子网号字段”，使两级IP地址变为三级IP地址。这种做法叫做划分子网（subnetting）（RFC 950），或子网寻址或子网路由选择。</li>
+</ol>
+<ul>
+<li>划分子网的基本思路：</li>
+</ul>
+<ol>
+<li>一个拥有许多物理网络的单位，可将所属的物理网络划分为若干个 <strong>子网</strong>（subnet）。划分子网纯属一个单位内部的事情。本单位以外的网络看不见这个网络室友多少个子网组成，因为这个单位对外 <strong>仍然表现为一个网络</strong>。</li>
+<li>划分子网的方法是从网络的主机号借用若干位作为子网号（subnet-id），当然主机号也就减少了同样的位数。于是两级IP地址在 <strong>本单位内部</strong> 就变为三级IP地址：网络号、子网号和主机号。<br>IP地址 ::={&lt;网络号&gt;,&lt;子网号&gt;,&lt;主机号&gt;}</li>
+<li>凡是从其他网络发送给本单位某台主机的IP数据报，仍然是根据IP数据报的目的网络号找到链接在本单位网络上的路由器。但此路由器在收到IP数据报后，再按目的网络号和子网号找到目的子网，把IP数据报交付给目的主机。</li>
+</ol>
+</li>
+<li>子网掩码<ul>
+<li>从IP数据报的首部无法看出源主机或目的主机所连接的网络是否进行了子网划分，使用子网掩码。</li>
+<li>子网掩码是一个网络或一个子网的重要属性。</li>
+<li>划分子网增加了灵活性，但却减少了能够连接在网络上的主机总数。<h5 id="使用子网时分组的转发"><a href="#使用子网时分组的转发" class="headerlink" title="使用子网时分组的转发"></a>使用子网时分组的转发</h5></li>
+</ul>
+</li>
+<li>使用子网划分后，路由表必须包含：目的网络地址、子网掩码、下一跳地址。</li>
+<li>在划分子网的情况下，路由器转发分组的算法如下：<ol>
+<li>从收到的数据报的首部提取目的IP地址D。</li>
+<li>先判断是否为直接交付。对路由器直接相连的网络逐个进行检查：用各网络的子网掩码和D逐位相与，看结果是否和相应的网络地址匹配。若匹配，则把分组进行直接交付（当然还需要把D转换成物理地址，把数据报封装成帧发送出去），转发任务结束，否则就是间接交付，步骤三。</li>
+<li>若路由表中有目的地址为D的特定主机路由，则把数据报传送给路由表中所指明的下一跳路由器；否则执行（4）。</li>
+<li>对路由表中的每一行（目的网络地址，子网亚麻，下一跳地址），用去只不过的子网掩码和D逐位相与，其结果为N。若N与该行的目的网络地址匹配，则把数据报传送给该行指明的下一跳路由器；否则，执行（5）。</li>
+<li>若路由表中有一个默认路由，则把数据报传送给路由表中所指明的默认路由器；否则，执行（6）。</li>
+<li>报告分组转发出错。<h5 id="无分类地址CIDR（构造超网）"><a href="#无分类地址CIDR（构造超网）" class="headerlink" title="无分类地址CIDR（构造超网）"></a>无分类地址CIDR（构造超网）</h5></li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p>网络前缀<br>划分子网在一定程度上缓解了互联网在发展中遇到的困难。然而在1992年互联网仍然面临三个问题：</p>
+<ol>
+<li>B类地址在1992年已经分配了一半，眼看很快就要分配完。</li>
+<li>互联网主干网上的路由表中的项目数急剧增长（从几千个增长到几万个）。</li>
+<li>整个IPv4的地址空间最终将全部耗尽。在2011年2月3日，IANA宣布IPv4地址已经耗尽了。</li>
+</ol>
+<ul>
+<li>当时预计前两个问题将会变得非常严重，因此IETF很快就研究出来采用无分类编址的方法来解决前两个问题。IETF认为上面的第三个问题属于更加长远的问题，因此专门成立IPv6工作组负责研究解决新版IP协议的问题。</li>
+<li>其实早在1987年，RFC 1009就指明了在一个划分子网的网络中课同时使用几个不同的子网掩码。使用变长子网掩码VLSM(Variable Length Subnet Mask)可进一步提高IP地址资源的利用率。在VLSM的基础上又进一步研究出 <strong>无分类编址方法</strong>，它的正式名字是 <strong>无分类域间路由选择CIDR</strong>(Classless Inter-Domain Routing)。</li>
+<li>CIDR最主要的特点有两个：</li>
+</ul>
+<ol>
+<li>CIDR消除了传统的A类、B类和C类地址以及划分子网的概念，因而能更加有效的分配IPv4的地址空间，并且在新的IPv6使用之前容许互联网的规模继续增长。CIDR把32位的IP地址划分为前后两个部分。前面部分是“ <strong>网络前缀</strong> （netowrk-orefix）”或简称为前缀，来指明网络，后面部分则用来指明主机。因此CIDR使IP地址从三级编址又回到了两级编址，但这已是无 <strong>分类的两级编址</strong>。其记法是：<pre><code>IP地址::={&lt;网络前缀&gt;，&lt;主机号=&gt;}
+</code></pre>CIDP还使用谢贤激发，或称为CIDR记法，即在IP地址后面加上斜线/然后写上网络前缀占的位数。</li>
+<li>CIDR把 <strong>网络前缀都相同</strong> 的连续的IP地址组成一个“<strong>CIDR地址块</strong>”。我们只要知道CIDR地址块中的任何一个地址，就可以知道这个地址块的起始地址（即最小地址）和最大地址，以及地址块中的地址数。</li>
+</ol>
+<ul>
+<li>由</li>
+</ul>
+<p>于一个CIDR地址块中有很多地址，所以在路由表中就利用CIDR地址块来查找目睹网络。这种地址的聚合常常称为 <strong>路由聚合</strong>。也称为 <strong>构成超网</strong>。</p>
+</li>
+<li>最长前缀匹配<br>在使用CIDR时，路由表中每个项目由“网络前缀”和“下一跳地址”组成。但是在查找路由表时可能会得到不止一个匹配结果，应当从匹配结果中选择具有最长网络前缀的路由。这叫最长前缀匹配。</li>
+<li>使用二叉线索树查找路由表<br>使用CIDR后，由于要寻找最长前缀匹配，使路由表的查找过程变得更加复杂了。二叉线索树查找应运而生。二叉线索树中的每个路径就代表路由表中存放的各个地址。<h4 id="网际控制报文ICMP"><a href="#网际控制报文ICMP" class="headerlink" title="网际控制报文ICMP"></a>网际控制报文ICMP</h4></li>
+<li>为了更有效的转发IP数据报和提高交付成功的机会，在网际层使用了 <strong>网际控制报网协议ICMP</strong>(Internet Control Message Protocol)。ICMP允许主机或路由器报告差错情况和提供有关异常情况的报告。ICMP是互联网的标准协议。但ICMP不是高层协议（看起来好像是高层协议，因为ICMP报文是封装在IP数据报中，作为其中的数据部分）是IP层协议。ICMP报文作为IP层数据报的数据，加上数据报的首部，组成IP数据报发送出去。</li>
+<li>ICMP报文的种类<ul>
+<li>ICMP的种类有两种：ICMP差错报告报文和ICMP询问报文。</li>
+<li>ICMP差错控制报文：</li>
+</ul>
+<ol>
+<li>终点不可达：类型值 3。当路由器或主机不能交付数据报时就向源站点发送终点不可达报文。</li>
+<li>时间超过：类型值 11。当路由器收到生存时间为0的数据报时，除丢弃该数据报外，还要向源点发送时间超过报文。当重点在预先规定的时间内不能收到一个数据报的全部数据报片时，就把已收到的数据报片都丢弃，并向源站点发送时间超过报文。</li>
+<li>参数问题：类型值 12。当路由器或目的主机收到的数据报的首部中有的字段的值不正确时，就丢弃该数据报，并向源点发送参数问题报文。</li>
+<li>改变路由（重定向）：类型值 5。路由器把改变路由报文发送给主机，让主机直到下次应将数据报发送给另外的路由器（可通过更好的路由）。<br>下面是不应发送ICMP差错报告报文的几种情况：<ul>
+<li>对ICMP差错报告报文，不再发送ICMP差错报告报文。</li>
+<li>对第一个分片的数据报的所有后序分片，都不发送ICMP差错报告报文。</li>
+<li>对具有多波地址的数据报，都不发送ICMP差错报告报文。</li>
+<li>对具有特殊地址（127.0.0.0，0.0.0.0）的数据报，不发送ICMP差错报告报文。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>ICMP询问报文：</li>
+</ul>
+<ol>
+<li>回送请求和回答 ICMP回送请求报文是由主机或路由器向一个特定的目的主机发出的询问。收到此报文的主机必须给源主机或路由器发送ICMP回送报文。这种询问报文用来测试目的站是否可达以及连接有关状态。</li>
+<li>时间戳请求和回答 用于时钟同步和时间测量。</li>
+</ol>
+</li>
+<li>ICMP应用举例<br>分组网间探测PING(Packet InterNet Groper)，用来测试两台主机的连通性。<br>路由追踪traceout。利用了ICMP时间超过报文。将TTL从1递增，并在IP数据报中封装一个无法交付的UDP数据报（使用非法端口号）。<h4 id="互联网的路由选择协议"><a href="#互联网的路由选择协议" class="headerlink" title="互联网的路由选择协议"></a>互联网的路由选择协议</h4></li>
+<li>有关路由表的几个基本概念<ol>
+<li>理想的路由算法</li>
+</ol>
+<ul>
+<li>算法必须是正确的和完整的。</li>
+<li>算法在计算上应简单。</li>
+<li>算法能适应通信量和网络拓扑的变化（自适应性）。</li>
+<li>算法应具有稳定性。</li>
+<li>算法应是公平的。</li>
+<li>算法应是最佳的。</li>
+</ul>
+<ol start="2">
+<li>分层次的路由选择协议<br>互联网采用的路由选择协议主要是自适应的、分布式路由选择协议。由于以下两个原因，互联网采用分层次的路由选择协议：</li>
+</ol>
+<ul>
+<li>互联网的规模非常大。如果让所有的路由器知道所有的网络应怎样到达，则这种路由表将非常大，处理起来太花时间。而所有这些路由器之间交换路由信息就会使互联网的通信链路饱和。</li>
+<li>许多单位不愿意外界了解自己单位网络上的不拘细节和本部门所采用的路由选择协议，但同时还希望连接到互联网上。<br>为此，可以把整个互联网划分为许多较小的 <strong>自治系统</strong>(autonomous system)，一般都记为AS。自治系统AS是在单一技术管理下的一组路由器而这些路由器使用一种自制系统内部的路由选择协议和共同的度量。一个AS对其他AS表现出的是一个单一的和一致的路由选择策略。</li>
+<li>在目前的互联网中，<strong>一个大的ISP就是一个AS</strong>，这样，互联网就把路由器划分成两大类，即：<ol>
+<li>内部网关协议IGP。即在一个自治系统内部使用的路由选择协议，而这与在互联网中的其他自治系统选用什么路由选择协议无关。目前这类路由选择协议使用最多。</li>
+<li>外部网关协议EGP。若源主机和目的主机处在不同的AS中，当数据报传到一个自治系统的边界时，就需要使用一种协议将路由选择信息传递到另一个自治系统中。这样的协议就是外部网关协议EGP。</li>
+</ol>
+<ul>
+<li>自治系统之间的路由选择也叫做域间路由选择，AS内的路由选择叫做域内路由选择。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内部网关协议RIP(Routing Information Protocol)<ol>
+<li>工作原理</li>
+</ol>
+<ul>
+<li>RIP是内部网关协议IGP中最先得到广泛使用的协议，它的中文名叫做路由信息协议，但很少被使用。RIP是一种分布式的 <strong>基于距离向量的路由选择协议</strong>，（距离指跳数）是互联网的标准协议，其最大的优点就是简单。</li>
+<li>局限：RIP允许一条路径最多包含15个路由器，可见PIR只适用于小型互联网。</li>
+<li>RIP的特点是：<ol>
+<li>仅和相邻路由器交换信息。如果两个路由器之间的通信不需要经过另一个路由器，那么这两个路由器就是相邻的。</li>
+<li>路由器交换的信息是当前本路由器所知道的全部信息，即自己现在的路由表。也就是说交换的信息是：“我到本自治系统中所有网络的最短距离，以及到每个网络应该经过的下一跳路由器。”</li>
+<li>按固定的时间间隔交换路由信息，例如，每隔30秒。然后路由器根据收到的路由信息更新路由表。当网络拓扑发生变化时，路由器也及时向相邻路由器通告拓扑变化后的路由信息。<br>这里要强调一点：路由器在刚刚开始工作的时候，它的路由表是空的。然后路由表就得出到直接相连的几个网络的距离（这些距离定义为1）。接着，每一个路由器也只和数目非常有限的相邻路由器交换并更新路由信息。经过若干次的更新后，所有的路由器最终都会知道到本自治系统中任何一个网络的最短距离和下一跳路由器的地址。</li>
+</ol>
+</li>
+</ul>
+<ol start="2">
+<li>距离向量算法<br>对每一个相邻路由器发送过来的RIP报文，进行以下步骤：</li>
+<li>对地址为X的相邻路由器发来的RIP报文，先修改此报文中的所有项目：把“下一跳”字段种的地址都改为X，并把所有的“距离”字段的值+1.每一个项目都有三个关键数据，即：到目的网络N，距离是d，下一跳路由器是X。</li>
+<li>对修改后的RIP报文种的每一个项目，进行以下步骤：<br>若原来的路由表中没有目的网络N，则把该项目调价到路由表中。<br>否则（即在路由表中有目的网络N，这时就再查看下一跳路由器地址）<br>若下一跳路由器地址是X，则把收到的项目替换原路由表种的项目。<br>否则（即这个项目是：到目的网络N，但下一跳路由器不是X）<br>  若收到的项目种的距离d小于路由表中的距离，则进行更新<br>  否则什么也不做。</li>
+<li>RIP报文的格式</li>
+<li>RIP协议使用运输层的用户数据报协议UDP（520端口）进行传送。</li>
+<li>RIP报文由首部和路由部分组成。</li>
+<li>RIP2报文中的路由部分由若干个路由信息组成，每个路由信息需要用20个字节。<strong>地址族标识符</strong> 又称地址类别字段用来标志所使用的地址协议。如采用IP地址就令这个字段的值为2（原来考虑RIP也可以用于其他非TCP/IP协议的情况）。路由标记填入自治系统号ASN(Autonomous System Number)，这是考虑到RIP有可能收到其他AS内的路由选择信息。在后面指出某个网络地址、该网络的子网掩码、下一跳路由器地址以及到此网络的距离。一个RIP报文最多可包括25个路由，最大长度4+20*25=504字节。如超过需再用一个RIP报文发送。</li>
+<li>RIP的缺点</li>
+<li>RIP限制了网络的规模，最大距离15（16不可达）。</li>
+<li>路由器之间交换的信息是路由器中的完整的路由表，因而随着网络规模的扩大，开销也就增加。</li>
+<li>当网络出现故障时，要经过比较长时间才能将此信息传送到所有的路由器。即更新过程的收敛时间过长。<br>因此，对于规模较大的网络就应当使用OSPF协议。然而目前在规模较小的网络中，使用RIP协议的仍占多数。</li>
+</ol>
+</li>
+<li>内部网关协议OSPF(Open Shortest Path First)<ul>
+<li>开放最短路径优先，其原理简单但实现复杂。“开放”表明OSPF协议不是受某一家厂商控制，二十公开发表的。“最短路径优先”是因为使用了迪杰斯特拉提出的最短路径算法SPF。OSPF的第二个版本OSPF2已经成为了互联网标准协议。</li>
+<li>OSPF最主要的特征就是使用分布式的 <strong>链路状态协议</strong>(link state protocol)，而不是像RIP那样的距离向量协议。和RIP相比，OSPF的三个要点和RIP 的不同：</li>
+</ul>
+<ol>
+<li>向本自治系统中的所有路由器发送消息。这里使用的方法是洪泛法，这就是路由器通过所有输出端口想所有相邻的路由器发送消息。而每一个相邻路由器又将此消息发往其所有的相邻路由器（除刚刚发来信息的路由器）。这样，最终整个区域中所有的路由器都得到了这个信息的一个副本。</li>
+<li>发送的信息就是与本路由器相邻的所有路由器的链路状态，单着只是路由器所知道的部分信息。所谓“链路状态”就是说明本路由器都和那些路由器相邻，以及该链路的度量（代价）。</li>
+<li>只有当链路状态发生变化时，路由器才向所有路由器用洪泛法发送此消息。</li>
+</ol>
+<ul>
+<li>由于个路由器之间频繁的交换链路状态信息，因此所有的路由器最终都能建立一个链路状态数据库，实际上就是全网拓扑图。这个拓扑结构在全网范围内是一致的。</li>
+<li>OSPF的链路状态数据库能较快的进行更新，使各个路由器能及时更新其路由表。OSPF的更新过程收敛的快是其重要优点。</li>
+<li>OSPF的层次结构区域划分</li>
+<li>为了使OSPF能够用于规模很大的网络，OSPF将一个自治系统再划分为若干个更小的范围，叫做区域。每个区域都有一个32位的区域标识符，一个区域内的路由器最好不超过200个。</li>
+<li>划分区域的好处就是把利用洪泛法交换链路状态信息的范围局限于每一个区域而不是整个的自治系统，这就减少了整个网络上的通信量。在一个区域内部的路由器只知道本区域的完整网络拓扑，而不知道其他区域的网络拓扑情况。</li>
+<li>为了使每一个区域能够和本区域意外的区域进行通信，OSPF使用层次结构的区域划分。在上层的区域叫做主干区域，主干区域的标识符定为0.0.0.0，主干区域的作用是用来联通其他在下层的区域。从其他区域来的信息都由区域边界路由器进行概括。</li>
+<li>每一个区域至少有一个区域边界路由器。来概括并向主干区域发送本区域内的链路状态信息。</li>
+<li>主干区域的路由器称主干路由器</li>
+<li>在主干区域内还要有一个路由器专门和其他自制系统交换路由信息，叫做在自制系统边界路由器。</li>
+<li>OSPF报文：</li>
+<li>OSPF不用UDP二十直接用IP数据报传送（89）。24字节的首部：<ol>
+<li>版本</li>
+<li>类型（五种）</li>
+<li>分组长度</li>
+<li>路由器标识符  标志发送该分组的路由器的接口的IP地址。</li>
+<li>区域标识符  分组属于的区域的标识符。</li>
+<li>校验和  用来检测分组中的差错。</li>
+<li>鉴别类型  </li>
+<li>鉴别</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- OSPF同意链路不同业务可设置不同代价从而计算出不同路由；若有代价相同的若干路径，进行负载平衡；仅在可信赖的路由器之间交换链路状态信息；每一个链路状态带一个32位的序号，序号越大状态越新，并规定链路状态序号增长的速率不超过5秒1次。
+</code></pre><ul>
+<li>OSPF的五种分组类型<ol>
+<li>问候(Hello)分组，用来发现和维持邻站的可达性。</li>
+<li>数据库描述(Database Description)分组，向邻站给出自己的链路状态数据库中所有链路状态项目的概要信息。</li>
+<li>链路状态请求(Link State Request)分组，向对方请求发送某些链路状态项目的详细信息。</li>
+<li>链路状态更新(Link State Update)分组，用洪泛法对全网更新链路状态。这种分组是最复杂的，也是OSPF协议最核心的部分。</li>
+<li>链路状态确认(Link State Acknowledgment)分组，对链路更新分组的确认。</li>
+</ol>
+<ul>
+<li>OSPF规定，每两个相邻路由器每隔10秒要交换一次问候分组，确保邻站可达。40秒未收到某个相邻路由器发来的问候分组，认为其不可达，立即修改链路状态数据库，并重新计算路由表。</li>
+<li>两个相邻路由器的链路状态数据库同步称为完全邻接。</li>
+<li>在网络运行过程中，只要有一个路由器的链路状态发生变化，该路由器就要使用链路状态更新报文洪泛。收到洪泛的确认。</li>
+<li>若多个路由器连接在一个以太网上即多点接入的局域网采用 <strong>指定的路由器</strong> 方法，代表该局域网上所有的链路想连接到该网络上的各路由器发送状态信息。</li>
+<li>外部网关协议BGP</li>
+<li>我们知道，内部网关协议主要是设法使数据报在一个AS中尽可能有效的从源站传送到目的站。在一个AS内部也不需要考虑其他方面的策略。然而BGP使用的环境却不同。主要是以下两个原因：</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>互联网规模太大，使得自治系统AS之间路由选择非常困难。比较合理的做法是在自治系统之间交换“可达性信息”。</li>
+<li>自治系统AS之间的路由必须考虑有关策略。<br>边界网关协议BGP只能是力求寻找一条能够到达目的网络且比较好的路由（不能兜圈子），而并非要寻找一条最佳路由。BGP采用了路径向量路由选择协议。<ul>
+<li>在配置BGP时，每一个自治系统的管理员要选择至少一个路由器作为该AS的BGP发言人。一般来说，两个发言人都是通过一个共享网络连接在一起的。而BGP发言人往往就是BGP边界路由器。</li>
+<li>一个BGP发言人要与其他AS的BGP发言人交换路由信息，就要先建立TCP连接，然后在此连接上交换BGP报文以建立BGP会话。<h4 id="IP多播"><a href="#IP多播" class="headerlink" title="IP多播"></a>IP多播</h4></li>
+<li>基本概念：<br>如多播视频，视频服务器只需将视频分组当做多播数据报发送，只需发送一次，路由器在转发时，将受到的分组复制分发。当分组到达目的局域网时，进行硬件多播。</li>
+<li>在局域网上进行硬件多播<h4 id="虚拟专用网VPN"><a href="#虚拟专用网VPN" class="headerlink" title="虚拟专用网VPN"></a>虚拟专用网VPN</h4>采用隧道技术（即IP-in-IP）,在公网IP报文中封装专用网IP报文作为数据部分。<h4 id="网络地址转换NAT-NAPT"><a href="#网络地址转换NAT-NAPT" class="headerlink" title="网络地址转换NAT(NAPT)"></a>网络地址转换NAT(NAPT)</h4>出口路由器维护一个公网IP+端口到内网IP的映射表。</li>
+</ul>
+</li>
+</ol>
 <h3 id="网络设备概要"><a href="#网络设备概要" class="headerlink" title="网络设备概要"></a>网络设备概要</h3><ul>
 <li>我们根据在网络中所工作的层把连接设备定义为五类：<ol>
 <li>工作在物理层以下的设备，如无源集线器。</li>
@@ -408,4 +624,4 @@
 </ol>
 </li>
 </ol>
-</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/hadoop，IDEA/" style="font-size: 15px;">hadoop，IDEA</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/windows下IDEA远程连接Hadoop/">windows下IDEA远程连接Hadoop</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/运行第一个MapReduce/">运行第一个MapReduce</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/hadoop安装及伪分布式配置/">hadoop安装及伪分布式配置</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><div class="tags"><a href="/tags/基础/">基础</a></div><div class="post-nav"><a class="pre" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a><a class="next" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP-Servlet-JDBC开发日记/">JSP+Servlet+JDBC开发日记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spark/">spark</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/云计算/">云计算</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构与算法/">数据结构与算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/组成原理/">组成原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/centos/" style="font-size: 15px;">centos</a> <a href="/tags/spark，IDEA/" style="font-size: 15px;">spark，IDEA</a> <a href="/tags/servlet/" style="font-size: 15px;">servlet</a> <a href="/tags/JDBC/" style="font-size: 15px;">JDBC</a> <a href="/tags/hadoop/" style="font-size: 15px;">hadoop</a> <a href="/tags/分布式/" style="font-size: 15px;">分布式</a> <a href="/tags/hadoop-错误/" style="font-size: 15px;">hadoop 错误</a> <a href="/tags/jsp/" style="font-size: 15px;">jsp</a> <a href="/tags/spark/" style="font-size: 15px;">spark</a> <a href="/tags/hadoop，IDEA/" style="font-size: 15px;">hadoop，IDEA</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/shell/" style="font-size: 15px;">shell</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a> <a href="/tags/模式匹配/" style="font-size: 15px;">模式匹配</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/IDEA运行第一个spark（WordCount）/">IDEA运行第一个spark（WordCount）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/29/spark问题记录/">spark问题记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/windows下IDEA远程连接Hadoop/">windows下IDEA远程连接Hadoop</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/再谈KMP——KMP的证明及优化/">再谈KMP——KMP的证明及优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/操作系统知识树/">操作系统知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机组成原理知识树/">计算机组成原理知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/08/计算机网络知树/">计算机网络知识树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/05/hadoop错误汇总/">hadoop错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/hadoop分布式配置及测试/">hadoop分布式配置及测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/shell script基础学习/">shell script基础学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://github.com/Deeeeeeepth/" title="My Github" target="_blank">My Github</a><ul></ul><a href="http://www.rxdonny.com/" title="donny's blog" target="_blank">donny's blog</a><ul></ul><a href="http://www.hut.edu.cn/" title="hut" target="_blank">hut</a><ul></ul><a href="http://www.gunpowder.net.cn/" title="gunpowder's" target="_blank">gunpowder's</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Ranranran.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
